@@ -1,0 +1,17 @@
+name: Publish images on release
+
+on:
+  push:
+    tags:
+      -  v*
+
+env:
+  VERSION: "${GITHUB_REF_NAME#v}"
+
+jobs:
+
+  publish_release:
+    runs-on: ubuntu-22.04
+    steps:
+      - run: |
+          echo "Version: ${{ env.VERSION }}"

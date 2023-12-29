@@ -1,0 +1,17 @@
+name: Release
+
+on:
+  workflow_dispatch:
+    inputs:
+      version:
+        description: 'The version to release'
+        required: true
+
+jobs:
+  releaseVersion:
+    runs-on: ubuntu-22.04
+    env:
+      VERSION: ${{ github.event.inputs.version }}
+    steps:
+      - run: |
+          echo "Version: ${{ env.VERSION }}"
